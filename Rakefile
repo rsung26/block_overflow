@@ -12,6 +12,7 @@ namespace :db do
 		Post.delete_all
 		User.delete_all
 		Comment.delete_all
+		Like.delete_all
 	end
 
 end

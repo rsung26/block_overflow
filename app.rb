@@ -21,6 +21,10 @@ get '/' do
 	erb :index
 end
 
+get '/posts' do
+	redirect '/'
+end
+
 post '/posts' do
   title = params[:title]
   body = params[:body]

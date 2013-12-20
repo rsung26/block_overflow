@@ -1,3 +1,4 @@
+
 <% if @user %>
 	<h1>Welcome, <a href="/users/<%=@user.id%>"><%=@user.username%></a></h1>
 	<a href="/users/sign_out">sign out</a>
@@ -6,6 +7,8 @@
 	<a href="/users/sign_in">sign in</a>
 <% end %>
 
+
+<!-- Write a Post -->
 <% if @user %>
 <form action="/posts" method="post">
 	<input type="text" name="title">
@@ -15,6 +18,8 @@
 <hr>
 <% end %>
 
+
+<!--Display All the Posts-->
 <% @posts.each do |post| %> 
 	<div class="post">
 		<h1>
@@ -22,7 +27,7 @@
 		</h1>
 			<p class="italics" >User: <%= post.user.username %></p>
 			<p class="italics" >Created at: <%= post.created_at.asctime %></p>
-		<div class= "body">
+		<div class= "body block_overflow">
 			<%= post.body %>
 		</div>
 		<a href="/posts/<%=post.id%>/like">LIKE</a>

@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 gem 'sinatra'
-gem 'sinatra-reloader'
 gem 'sinatra-activerecord'
 gem 'activerecord', '~> 3.2.13'
 gem 'rake'

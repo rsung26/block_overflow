@@ -10,6 +10,8 @@ require_relative 'config'
 enable :sessions
 
 get '/' do
+
+	#Check to see if a user is logged in
 	if session[:username]
 		@user = User.find_by_username(session[:username])
 	else 
@@ -25,6 +27,8 @@ get '/posts' do
 	redirect '/'
 end
 
+
+#Save a post into the database
 post '/posts' do
   title = params[:title]
   body = params[:body]
@@ -35,6 +39,8 @@ post '/posts' do
   redirect '/'
 end
 
+
+#Register a User
 get '/users/sign_up' do 
 	erb :sign_up
 end
@@ -45,6 +51,8 @@ post '/users' do
 	redirect '/'
 end
 
+
+#Sign in a User
 get '/users/sign_in' do 
 	erb :sign_in
 end
@@ -58,6 +66,7 @@ post '/users/sign_in' do
   end
 end
 
+#Sign out a User
 get '/users/sign_out' do 
 	session[:username] = nil
 	redirect '/'
@@ -72,14 +81,15 @@ post '/posts/:id/comments' do
 	user = User.find_by_username(session[:username])
 	post = Post.find(params[:id].to_i)
 	comment = Comment.new(:body => params[:comment_text])
-	comment.save 
+	comment.save
+
 	post.comments << comment
 	user.comments << comment
+
 	redirect '/'
 end 
 
 get '/posts/:id/like' do 
-	binding.pry
 	
 	user = User.find_by_username(session[:username])
 	post = Post.find(params[:id].to_i)
@@ -92,24 +102,4 @@ get '/posts/:id/like' do
 	user.faves << post
 
 	redirect '/'
-
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -9,9 +9,9 @@ require_relative 'config'
 
 enable :sessions
 
-get '/' do
 
-	#Check to see if a user is logged in
+#Displays a User and its Posts
+get '/' do
 	if session[:username]
 		@user = User.find_by_username(session[:username])
 	else 
@@ -19,7 +19,6 @@ get '/' do
 	end
 
 	@posts = Post.all
-
 	erb :index
 end
 
@@ -39,13 +38,34 @@ post '/posts' do
   redirect '/'
 end
 
+#See User's Post
+get '/users/:id' do 
+	@user = User.find(params[:id].to_i)
+	erb :user
+end
+
+get '/user/post/:id/view' do
+	erb :view_post
+end
+
+get '/user/post/:id/edit' do
+	erb :edit_post
+end
+
+get '/user/post/:id/delete' do
+	"Delete this Post a User has"
+end
+
+
+
+
 
 #Register a User
 get '/users/sign_up' do 
 	erb :sign_up
 end
 
-post '/users' do 
+post '/users/sign_up' do 
 	user = User.create(:username => params[:username])
 	session[:username] = user.username
 	redirect '/'
@@ -72,10 +92,11 @@ get '/users/sign_out' do
 	redirect '/'
 end
 
-get '/users/:id' do 
-	@user = User.find(params[:id].to_i)
-	erb :show
-end
+
+
+
+
+
 
 post '/posts/:id/comments' do 
 	user = User.find_by_username(session[:username])

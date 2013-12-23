@@ -1,6 +1,9 @@
 require 'bundler/setup'
 Bundler.require(:default)
 
+require 'pry'
+#require 'sinatra/reloader'
+
 require_relative 'models/post'
 require_relative 'models/user'
 require_relative 'models/comment'
@@ -38,28 +41,6 @@ post '/posts' do
   redirect '/'
 end
 
-#See User's Post
-get '/users/:id' do 
-	@user = User.find(params[:id].to_i)
-	erb :user
-end
-
-# get '/user/post/:id/view' do
-# 	erb :view_post
-# end
-
-# get '/user/post/:id/edit' do
-# 	erb :edit_post
-# end
-
-# get '/user/post/:id/delete' do
-# 	"Delete this Post a User has"
-# end
-
-
-
-
-
 #Register a User
 get '/users/sign_up' do 
 	erb :sign_up
@@ -92,6 +73,25 @@ get '/users/sign_out' do
 	redirect '/'
 end
 
+
+#See User's Post
+get '/users/:id' do
+	@user = User.find(params[:id].to_i)
+	erb :show
+end
+
+get '/user/:user_id/post/:post_id/view' do
+	"VIEW"
+
+end
+
+get '/user/:user_id/post/:post_id/edit' do
+	"EDIT"
+end
+
+get '/user/:user_id/post/:post_id/delete' do
+	"DELETE"
+end
 
 
 

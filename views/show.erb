@@ -2,8 +2,6 @@
 <h1 class="user">Posts <%= @user.username %> has made:</h1>
 
 <table>
-<% @user.faves.each do |post| %>
-	
 	<thead>
 		<td>Title</td>
 		<td>View</td>
@@ -12,10 +10,30 @@
 	</thead>	
 
 	<tbody>
-		<td><%=post.title%></td>
-		<td><a href="/user/post/<%=post.id%>/view">View</a></td>
-		<td><a href="/user/post/<%=post.id%>/edit">Edit</a></td>
-		<td><a href="/user/post/<%=post.id%>/delete">Delete</a></td>
+		<% @user.posts.each do |post| %>
+		<tr>
+			<td><%=post.title%></td>
+			<td><a href="/user/<%=@user.id%>/post/<%=post.id%>/view">View</a></td>
+			<td><a href="/user/<%=@user.id%>/post/<%=post.id%>/edit">Edit</a></td>
+			<td><a href="/user/<%=@user.id%>/post/<%=post.id%>/delete">Delete</a></td>
+		</tr>
+		<% end %>
 	</tbody>
-<% end %>
+</table>
+
+<h1>Favorite Posts:</h1>
+<table>
+	<thead>
+		<td>Title</td>
+		<td>Body</td>
+	</thead>	
+
+	<tbody>
+		<% @user.faves.each do |post| %>
+		<tr>
+			<td><%=post.title%></td>
+			<td><%=post.body%></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>

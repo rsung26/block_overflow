@@ -1,0 +1,32 @@
+Heroku: http://rocky-crag-3091.herokuapp.com/ 
+Git Repo: https://github.com/rsung26/block_overflow
+
+Make a Code Blog using the following specs:
+
+    -There should also be additional routes for Editing, Creating and Deleting posts available to one designated User.
+    -Newest posts should be visible at the top.
+    -Posts must accept syntax-highlighted code in their bodies as an option in addition to plain-text bodies.
+
+
+
+
+
+
+
+Priority Tasks
+
+** Complete Crud functionality ****
+
+-Add edit and delete functionality for posts 
+
+
+*** BONUS / ICING ON THE CAKE ***
+
+1. Styling
+-Navigation Bar
+-Skeleton Framework for positioning
+-Font Awesome icons
+-Chat emotions (?)
+
+2. Extend Crud Functionality to Users
+-An Admin system with privileges

@@ -44,17 +44,17 @@ get '/users/:id' do
 	erb :user
 end
 
-get '/user/post/:id/view' do
-	erb :view_post
-end
+# get '/user/post/:id/view' do
+# 	erb :view_post
+# end
 
-get '/user/post/:id/edit' do
-	erb :edit_post
-end
+# get '/user/post/:id/edit' do
+# 	erb :edit_post
+# end
 
-get '/user/post/:id/delete' do
-	"Delete this Post a User has"
-end
+# get '/user/post/:id/delete' do
+# 	"Delete this Post a User has"
+# end
 
 
 

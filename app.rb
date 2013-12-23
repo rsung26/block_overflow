@@ -2,7 +2,7 @@ require 'bundler/setup'
 Bundler.require(:default)
 
 require 'pry'
-#require 'sinatra/reloader'
+# require 'sinatra/reloader'
 
 require_relative 'models/post'
 require_relative 'models/user'
@@ -81,20 +81,34 @@ get '/users/:id' do
 end
 
 get '/user/:user_id/post/:post_id/view' do
-	"VIEW"
+	user_id = params[:user_id].to_i
+	post_id = params[:post_id].to_i
 
+	#Find the post that user has
+	user = User.find(user_id)
+	@post = user.posts.find(post_id)
+
+	erb :view_post
 end
 
 get '/user/:user_id/post/:post_id/edit' do
+	user_id = params[:user_id].to_i
+	post_id = params[:post_id].to_i
+
+	#Find the post that user has
+	user = User.find(user_id)
+	@post = user.posts.find(post_id)
+
+	erb :edit_post
+end
+
+post 'users/post/edit' do
 	"EDIT"
 end
 
 get '/user/:user_id/post/:post_id/delete' do
 	"DELETE"
 end
-
-
-
 
 
 

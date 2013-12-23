@@ -9,10 +9,6 @@ Make a Code Blog using the following specs:
 
 
 
-
-
-
-
 Priority Tasks
 
 ** Complete Crud functionality ****

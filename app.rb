@@ -80,34 +80,57 @@ get '/users/:id' do
 	erb :show
 end
 
-get '/user/:user_id/post/:post_id/view' do
-	user_id = params[:user_id].to_i
+
+
+get '/users/posts/:post_id/view' do
+
 	post_id = params[:post_id].to_i
 
 	#Find the post that user has
-	user = User.find(user_id)
+	user = User.find_by_username(session[:username])
 	@post = user.posts.find(post_id)
 
 	erb :view_post
 end
 
-get '/user/:user_id/post/:post_id/edit' do
-	user_id = params[:user_id].to_i
+get '/users/posts/:post_id/edit' do
+	# user_id = params[:user_id].to_i
 	post_id = params[:post_id].to_i
+	user = User.find_by_username(session[:username])
 
 	#Find the post that user has
-	user = User.find(user_id)
 	@post = user.posts.find(post_id)
 
 	erb :edit_post
 end
 
-post 'users/post/edit' do
-	"EDIT"
+post '/users/posts/:post_id/edit' do
+	title = params[:title]
+	body = params[:body]
+	post_id = params[:post_id].to_i
+
+
+	user = User.find_by_username(session[:username])
+	post = Post.find(post_id)
+
+	post.title = title
+	post.body = body
+
+	user.posts << post
+	post.save
+
+	redirect '/'
 end
 
-get '/user/:user_id/post/:post_id/delete' do
-	"DELETE"
+get '/users/posts/:post_id/delete' do
+	post_id = params[:post_id].to_i
+	post = Post.find(post_id)
+	user = User.find_by_username(session[:username])
+
+	post.destroy
+	user.posts.delete(post)
+
+	redirect '/'
 end
 
 

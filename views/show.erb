@@ -13,9 +13,9 @@
 		<% @user.posts.each do |post| %>
 		<tr>
 			<td><%=post.title%></td>
-			<td><a href="/user/<%=@user.id%>/post/<%=post.id%>/view">View</a></td>
-			<td><a href="/user/<%=@user.id%>/post/<%=post.id%>/edit">Edit</a></td>
-			<td><a href="/user/<%=@user.id%>/post/<%=post.id%>/delete">Delete</a></td>
+			<td><a href="/users/posts/<%=post.id%>/view">View</a></td>
+			<td><a href="/users/posts/<%=post.id%>/edit">Edit</a></td>
+			<td><a href="/users/posts/<%=post.id%>/delete">Delete</a></td>
 		</tr>
 		<% end %>
 	</tbody>

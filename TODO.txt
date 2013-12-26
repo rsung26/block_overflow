@@ -16,7 +16,7 @@ Priority Tasks
 -Add edit and delete functionality for posts 
 
 
-*** BONUS / ICING ON THE CAKE ***
+*** BONUS  ***
 
 1. Styling
 -Navigation Bar

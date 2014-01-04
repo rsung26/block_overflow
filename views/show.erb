@@ -1,12 +1,11 @@
 <!-- Show All Posts the User has made -->
+<a href="/">Home</a>
 <h1 class="user">Posts <%= @user.username %> has made:</h1>
 
 <table>
 	<thead>
 		<td>Title</td>
-		<td>View</td>
-		<td>Edit</td>
-		<td>Delete</td>
+		<td>Cmds</td>
 	</thead>	
 
 	<tbody>
@@ -25,14 +24,13 @@
 <table>
 	<thead>
 		<td>Title</td>
-		<td>Body</td>
 	</thead>	
 
 	<tbody>
 		<% @user.faves.each do |post| %>
 		<tr>
 			<td><%=post.title%></td>
-			<td><%=post.body%></td>
+			<td><a href="/users/posts/<%=post.id%>/view">View</a></td>
 		</tr>
 		<% end %>
 	</tbody>

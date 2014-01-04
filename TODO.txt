@@ -3,17 +3,16 @@ Git Repo: https://github.com/rsung26/block_overflow
 
 Make a Code Blog using the following specs:
 
-    -There should also be additional routes for Editing, Creating and Deleting posts available to one designated User.
-    -Newest posts should be visible at the top.
-    -Posts must accept syntax-highlighted code in their bodies as an option in addition to plain-text bodies.
+ XXX-There should also be additional routes for Editing, Creating and Deleting posts available to one designated User.
+ XXX-Newest posts should be visible at the top.
+ XXX-Posts must accept syntax-highlighted code in their bodies as an option in addition to plain-text bodies.
 
 
+*Test and Refactor CRUD functionality when needed
+*Include an Order by dropdown for multiple categories
+*Optimize code ray blocks and find alternatives to displaying tables
 
-Priority Tasks
-
-** Complete Crud functionality ****
-
--Add edit and delete functionality for posts 
+Minimum Viable Product COMPLETE
 
 
 *** BONUS  ***

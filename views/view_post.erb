@@ -1,3 +1,10 @@
 <h1>View Post</h1>
 <p><%= @post.title %></p>
-<p><%= @post.body %></p>
+
+<% if @post.language == "ruby" %>
+	<% html = CodeRay.scan(@post.body, :ruby).div(:line_numbers => :table) %>
+	<p><%= html %></p>
+<% else %>
+	<p><%= @post.body %></p>
+<% end %>
+

@@ -22,6 +22,7 @@ get '/' do
 	end
 
 	@posts = Post.all
+	@posts = Post.order('created_at DESC')
 	erb :index
 end
 
@@ -34,8 +35,10 @@ end
 post '/posts' do
   title = params[:title]
   body = params[:body]
+  language = params[:language]
+
   user = User.find_by_username(session[:username])
-  post = Post.new(:title => title, :body => body)
+  post = Post.new(:title => title, :body => body, :language => language)
   user.posts << post
   post.save
   redirect '/'
@@ -107,14 +110,15 @@ end
 post '/users/posts/:post_id/edit' do
 	title = params[:title]
 	body = params[:body]
+	language = params[:language]
 	post_id = params[:post_id].to_i
-
 
 	user = User.find_by_username(session[:username])
 	post = Post.find(post_id)
 
 	post.title = title
 	post.body = body
+	post.language = language
 
 	user.posts << post
 	post.save
